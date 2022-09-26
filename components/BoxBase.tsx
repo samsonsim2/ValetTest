@@ -8,6 +8,12 @@ import { useGLTF, useAnimations, useTexture } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { BackSide, LoopPingPong } from 'three'
 
+type ActionName = 'animation_0'
+// type GLTFActions = Record<ActionName, THREE.AnimationAction>
+interface GLTFAction extends THREE.AnimationClip {
+  name: ActionName
+}
+
 type GLTFResult = GLTF & {
   nodes: {
     RightFlap: THREE.Mesh
@@ -17,10 +23,8 @@ type GLTFResult = GLTF & {
     TopBase: THREE.Bone
   }
   materials: {}
+  animations: GLTFAction[]
 }
-
-type ActionName = 'animation_0'
-type GLTFActions = Record<ActionName, THREE.AnimationAction>
 
 export function BoxBase(props: JSX.IntrinsicElements['group']) {
   const diffuseMap = useTexture('./textures/Box_Base_UV.jpg')
@@ -33,7 +37,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
     '/models/Boxbase.glb'
   ) as GLTFResult
 
-  const { actions } = useAnimations<GLTFActions>(animations, group)
+  const { actions } = useAnimations(animations, group)
 
   const btn = document.querySelector('.btn')
   btn?.addEventListener('click', () => {
@@ -41,9 +45,9 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
   })
 
   useEffect(() => {
-    actions.animation_0.play()
-    actions.animation_0.setLoop(LoopPingPong, 2)
-    actions.animation_0.reset()
+    actions?.animation_0?.play()
+    actions?.animation_0?.setLoop(LoopPingPong, 2)
+    actions?.animation_0?.reset()
   }, [active])
 
   return (

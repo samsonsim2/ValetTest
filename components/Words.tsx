@@ -8,6 +8,12 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { LoopPingPong, MeshStandardMaterial } from 'three'
 
+type ActionName = 'animation_0'
+// type GLTFActions = Record<ActionName, THREE.AnimationAction>
+interface GLTFAction extends THREE.AnimationClip {
+  name: ActionName
+}
+
 type GLTFResult = GLTF & {
   nodes: {
     ['21Years']: THREE.Mesh
@@ -16,10 +22,8 @@ type GLTFResult = GLTF & {
     TopBase_word: THREE.Bone
   }
   materials: {}
+  animations: GLTFAction[]
 }
-
-type ActionName = 'animation_0'
-type GLTFActions = Record<ActionName, THREE.AnimationAction>
 
 export function Words(props: JSX.IntrinsicElements['group']) {
   const [active, setActive] = useState(false)
@@ -27,7 +31,8 @@ export function Words(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials, animations } = useGLTF(
     '/models/Words.glb'
   ) as GLTFResult
-  const { actions } = useAnimations<GLTFActions>(animations, group)
+
+  const { actions } = useAnimations(animations, group)
 
   const btn = document.querySelector('.btn')
   btn?.addEventListener('click', () => {
@@ -35,9 +40,9 @@ export function Words(props: JSX.IntrinsicElements['group']) {
   })
 
   useEffect(() => {
-    actions.animation_0.play()
-    actions.animation_0.setLoop(LoopPingPong, 2)
-    actions.animation_0.reset()
+    actions?.animation_0?.play()
+    actions?.animation_0?.setLoop(LoopPingPong, 2)
+    actions?.animation_0?.reset()
   }, [active])
   return (
     <group ref={group} {...props} dispose={null} scale={[0.01, 0.01, 0.01]}>
