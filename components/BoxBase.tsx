@@ -32,7 +32,9 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
   diffuseMap.flipY = false
 
   const [active, setActive] = useState(false)
-  const group = useRef<THREE.Group>()
+
+  const group =
+    React.useRef<THREE.Group>() as React.MutableRefObject<THREE.Group>
   const { nodes, materials, animations } = useGLTF(
     '/models/Boxbase.glb'
   ) as GLTFResult

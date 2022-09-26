@@ -27,7 +27,8 @@ type GLTFResult = GLTF & {
 
 export function Words(props: JSX.IntrinsicElements['group']) {
   const [active, setActive] = useState(false)
-  const group = useRef<THREE.Group>()
+  const group =
+    React.useRef<THREE.Group>() as React.MutableRefObject<THREE.Group>
   const { nodes, materials, animations } = useGLTF(
     '/models/Words.glb'
   ) as GLTFResult
