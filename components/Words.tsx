@@ -57,7 +57,7 @@ export function Words(props: JSX.IntrinsicElements['group']) {
             material={nodes['21Years'].material}
             position={[21.75, 0, 11.58]}
           >
-            <meshStandardMaterial color={'#7cd3ab'} />
+            <meshStandardMaterial color={'red'} />
           </mesh>
           <mesh
             name='StaticWords'
