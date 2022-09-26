@@ -64,11 +64,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             material={nodes.RightFlap.material}
             position={[-43.44, 0, 22.62]}
           >
-            <meshStandardMaterial
-              map={diffuseMap}
-              normalMap={normalMap}
-              normalScale={0.35}
-            />
+            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
           </mesh>
           <mesh
             name='LeftFlap'
@@ -78,11 +74,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             material={nodes.LeftFlap.material}
             position={[43.52, 0, 23.17]}
           >
-            <meshStandardMaterial
-              map={diffuseMap}
-              normalMap={normalMap}
-              normalScale={0.35}
-            />
+            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
           </mesh>
           <mesh
             name='BoxBase'
@@ -91,11 +83,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             geometry={nodes.BoxBase.geometry}
             material={nodes.BoxBase.material}
           >
-            <meshStandardMaterial
-              map={diffuseMap}
-              normalMap={normalMap}
-              normalScale={0.35}
-            />
+            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
           </mesh>
           <mesh
             name='BoxBase'
@@ -108,7 +96,6 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
               side={BackSide}
               color={'grey'}
               normalMap={normalMap}
-              normalScale={0.35}
             />
           </mesh>
           <skinnedMesh
@@ -118,11 +105,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             skeleton={nodes.TopFlap.skeleton}
           >
             <primitive object={nodes.TopBase} />
-            <meshStandardMaterial
-              map={diffuseMap}
-              normalMap={normalMap}
-              normalScale={0.35}
-            />
+            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
           </skinnedMesh>
         </group>
       </group>
