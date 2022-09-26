@@ -52,6 +52,8 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
     actions?.animation_0?.reset()
   }, [active])
 
+  const normalScale = new THREE.Vector2(0.35, 0.35)
+
   return (
     <group ref={group} {...props} dispose={null} scale={[0.01, 0.01, 0.01]}>
       <group>
@@ -64,7 +66,11 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             material={nodes.RightFlap.material}
             position={[-43.44, 0, 22.62]}
           >
-            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
+            <meshStandardMaterial
+              map={diffuseMap}
+              normalMap={normalMap}
+              normalScale={normalScale}
+            />
           </mesh>
           <mesh
             name='LeftFlap'
@@ -74,7 +80,11 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             material={nodes.LeftFlap.material}
             position={[43.52, 0, 23.17]}
           >
-            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
+            <meshStandardMaterial
+              map={diffuseMap}
+              normalMap={normalMap}
+              normalScale={normalScale}
+            />
           </mesh>
           <mesh
             name='BoxBase'
@@ -83,7 +93,11 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             geometry={nodes.BoxBase.geometry}
             material={nodes.BoxBase.material}
           >
-            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
+            <meshStandardMaterial
+              map={diffuseMap}
+              normalMap={normalMap}
+              normalScale={normalScale}
+            />
           </mesh>
           <mesh
             name='BoxBase'
@@ -96,6 +110,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
               side={BackSide}
               color={'grey'}
               normalMap={normalMap}
+              normalScale={normalScale}
             />
           </mesh>
           <skinnedMesh
@@ -105,7 +120,11 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
             skeleton={nodes.TopFlap.skeleton}
           >
             <primitive object={nodes.TopBase} />
-            <meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
+            <meshStandardMaterial
+              map={diffuseMap}
+              normalMap={normalMap}
+              normalScale={normalScale}
+            />
           </skinnedMesh>
         </group>
       </group>
