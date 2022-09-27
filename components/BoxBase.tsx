@@ -49,6 +49,7 @@ export function BoxBase(props: JSX.IntrinsicElements['group']) {
   useEffect(() => {
     actions?.animation_0?.play()
     actions?.animation_0?.setLoop(LoopPingPong, 2)
+
     actions?.animation_0?.reset()
   }, [active])
 

@@ -13,6 +13,7 @@ import { MeshStandardMaterial } from 'three'
 import { useEffect, useState } from 'react'
 import { BoxBase } from '../components/BoxBase'
 import { Words } from '../components/Words'
+import { Sachet } from '../components/Sachet'
 const Home: NextPage = () => {
   return (
     <div className='container'>
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
 
         <BoxBase />
         <Words />
+        <Sachet />
         <ambientLight intensity={0.5} />
         <directionalLight position={[0, 1, 1]} intensity={0.7} />
         <OrbitControls />
